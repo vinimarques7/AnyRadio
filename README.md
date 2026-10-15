@@ -36,25 +36,9 @@ O nome tem um truque: *Any* soa como **N**. Na matemática, *n* é "qualquer nú
 
 ## Arquitetura
 
-```mermaid
-flowchart LR
-    NET([Internet<br/>stream MP3]) -->|Wi-Fi| ESP
-    subgraph ESP[ESP32 · FreeRTOS · tempo real]
-        direction TB
-        NETT[Task de rede<br/>produtora] -->|Stream Buffer| AUD[Task de áudio<br/>consumidora]
-        IN[Task de entrada] --> Q[(Fila de comandos)]
-        ISR{{ISR encoder e botões}} -->|Semáforo| IN
-        TEL[Task de telemetria<br/>200 ms]
-    end
-    AUD -->|I2S| AMP[MAX98357A] --> SPK([Alto-falante])
-    ENC([Encoder + botões]) --> ISR
-    ESP <-->|UART · JSON · 115200 baud| PI
-    subgraph PI[Raspberry Pi · interface]
-        direction TB
-        BE[Node.js + serialport] -->|WebSocket| FE[React no Chromium kiosk]
-    end
-    FE --> LCD([Tela HDMI 5"])
-```
+<p align="center">
+  <img src="images/arquitetura.png" alt="Arquitetura AnyRadio" width="100%">
+</p>
 
 ## Tecnologias
 
