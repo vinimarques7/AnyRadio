@@ -1,0 +1,35 @@
+# --- PlatformIO / firmware ---
+.pio/
+.pioenvs/
+.piolibdeps/
+firmware/sdkconfig
+firmware/sdkconfig.*
+!firmware/sdkconfig.defaults
+firmware/managed_components/
+firmware/dependencies.lock
+secrets.ini
+**/secrets.h
+
+# --- Node / UI ---
+node_modules/
+dist/
+build/
+.vite/
+*.log
+npm-debug.log*
+.npm/
+.env
+.env.*
+!.env.example
+
+# --- Gravações da serial (mock/replay) ---
+*.jsonl
+!protocol/examples/*.jsonl
+
+# --- Editores / SO ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
